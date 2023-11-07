@@ -6,18 +6,20 @@ answers: # this needs to match the profile: in your dbt_project.yml file
       method: oauth
       # To use this, first run (in your terminal): export BIGQUERY_PROJECT="your_project_name"
       # Then dbt will recognise the variable
-      database: "{{ env_var('BIGQUERY_PROJECT') }}"
+      # database: "{{ env_var('BIGQUERY_PROJECT') }}"
+      database: buoyant-striker-404004
       schema: dbt_test # Replace this with dbt_your_name, e.g. dbt_bob
-      threads: 64 # Max number of concurrent things running at once
+      threads: 4 # Max number of concurrent things running at once
       timeout_seconds: 300
-      location: US
-      priority: interactive # BigQuery can use "batch" or "interactive". https://cloud.google.com/bigquery/docs/running-queries
+      # location: asia-northeast1
+      # priority: interactive # BigQuery can use "batch" or "interactive". https://cloud.google.com/bigquery/docs/running-queries
+      OPTIONAL_CONFIG: VALUE
 
     # You won't use this, but an example of using a different target
     production:
       type: bigquery
       method: oauth
-      database: "{{ env_var('BIGQUERY_PROJECT') }}"
+      database: buoyant-striker-404004
       schema: dbt_production
       threads: 64
       timeout_seconds: 300
